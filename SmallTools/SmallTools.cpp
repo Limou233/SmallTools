@@ -1,11 +1,13 @@
-﻿// SmallTools.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-
+﻿/*
+Coding: UTF-8
+@Author: (limou233)[http://github.com/limou233]
+Compiler: MSVC++ 2022
+*/
 #include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main(){
+	return 0;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
