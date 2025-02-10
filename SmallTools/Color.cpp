@@ -8,7 +8,7 @@ Compiler: MSVC++ 2022
 
 #include<iostream>
 #include<Windows.h>
-#define F_BlUE 0X1
+#define F_BLUE 0X1
 #define F_GREEN 0x2
 #define F_RED 0x4
 #define F_LIGHT 0x8
@@ -21,13 +21,17 @@ Compiler: MSVC++ 2022
 
 using namespace std;
 
-static void ColPrint(string __str, int __color, bool back = false) {// (string:打印字符,int:颜色,bool:恢复默认颜色) -> void
+static void ColPrint(string __str, int __color, bool back = true) {
+    // (string:打印字符,int:颜色,bool:恢复默认颜色) -> void
+    // 在控制台中输出带有颜色的string
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), __color);
     cout << __str;
     if (back)
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), F_WHITE);
 }
 static void Color(int __Color) {
+    // (int:颜色) -> void
+    // 切换接下来控制台输出的颜色
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), __Color);
 }
 

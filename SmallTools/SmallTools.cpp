@@ -3,22 +3,42 @@ Coding: UTF-8
 @Author: (limou233)[http://github.com/limou233]
 Compiler: MSVC++ 2022
 */
-#include <iostream>
-#include<Windows.h>
 #include"./Color.cpp"
 #include"./Opts.cpp"
 using namespace std;
 BOOL IsRunAsAdministrator();
+void test() {
+    cout << "test" << endl;
+}
 int main(){
-	system("chcp 65001 && cls");
+	system("cls");
+    cout << " start 开始" << endl;
     if (IsRunAsAdministrator() == FALSE) {
-        ColPrint("请以管理员权限运行本程序!\n", F_RED,false);
+        ColPrint("请以管理员权限运行本程序!\n", F_RED);
         pause("按任意键退出....");
+        return 1;
     }
-    ColPrint("欢迎使用小工具箱", F_LIGHT);
+    ColPrint("欢迎使用小工具箱\n", F_WHITE);
+    ColPrint("       ——By: limou233\n", F_BLUE| F_LIGHT);
+    ColPrint("+====功能列表====+\n",F_GREEN|F_LIGHT,false);
+    for (short i = 0;!opt::list[i].name.empty();i++) {
+         cout<<i+1<<'.'<<opt::list[i].name<<endl;
+    }ColPrint("", F_WHITE);//还原颜色
+    cout << "请输入功能编号>>>";
+    string opt_id;cin >> opt_id;
+    if (!string_is_num(opt_id)) {
+        ColPrint("请输入数字!\n", F_RED);
+        pause("按任意键退出...");
+        return 1;
+    }
+    cout<<"正在执行"<<opt::list[atoi(opt_id.c_str())-1].name<<endl;
+    opt::list[atoi(opt_id.c_str())-1].func();
+    pause("按任意键退出...");
+    return 0;
 }
 //From[https://blog.csdn.net/u012505629/article/details/109692159]
 BOOL IsRunAsAdministrator() {
+    // 判断当前进程是否以管理员权限运行
     BOOL fIsRunAsAdmin = FALSE;
     DWORD dwError = ERROR_SUCCESS;
     PSID pAdministratorsGroup = NULL;
