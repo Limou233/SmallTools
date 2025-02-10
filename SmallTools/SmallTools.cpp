@@ -10,13 +10,12 @@ Compiler: MSVC++ 2022
 using namespace std;
 BOOL IsRunAsAdministrator();
 int main(){
-	system("chcp 65001");
+	system("chcp 65001 && cls");
     if (IsRunAsAdministrator() == FALSE) {
-        ColPrint("请以管理员权限运行本程序!\n", F_RED);
+        ColPrint("请以管理员权限运行本程序!\n", F_RED,false);
         pause("按任意键退出....");
     }
-    
-	return 0;
+    ColPrint("欢迎使用小工具箱", F_LIGHT);
 }
 //From[https://blog.csdn.net/u012505629/article/details/109692159]
 BOOL IsRunAsAdministrator() {

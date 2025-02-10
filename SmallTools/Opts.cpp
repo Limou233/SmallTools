@@ -7,8 +7,11 @@ inline void pause(string __prompt = "按任意键继续....") {
 }
 
 namespace opt {
+
 	// 函数名前加inline是为了解决LNK200和LNK1669错误
-	 inline void win10_del_Darrows() {
+
+	//Darrows
+	inline void win10_del_Darrows() {
 		system("reg add \"\
 			HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Icons\" \
 			/v 29 /d \" % systemroot % \\system32\\imageres.dll, 197\" /t reg_sz /f");
@@ -31,4 +34,6 @@ namespace opt {
 		system("start explorer");
 		cout << "已完成!" << endl, pause();
 	}
+	
+
 }
