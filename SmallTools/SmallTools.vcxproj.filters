@@ -21,5 +21,8 @@
     <ClCompile Include="Color.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="Opts.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

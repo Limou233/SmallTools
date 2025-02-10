@@ -6,48 +6,16 @@ Compiler: MSVC++ 2022
 #include <iostream>
 #include<Windows.h>
 #include"./Color.cpp"
+#include"./Opts.cpp"
 using namespace std;
 BOOL IsRunAsAdministrator();
-
-void pause(string __prompt="按任意键继续....") {
-    //暂停程序 (string:提示语) -> void
-	cout << __prompt << endl;
-	getchar();//按任意键退出
-}
-class Opt {
-	public:
-
-		void win10_del_Darrows() {
-			system("reg add \"\
-			HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Icons\" \
-			/v 29 /d \" % systemroot % \\system32\\imageres.dll, 197\" /t reg_sz /f");
-			system("taskkill /f /im explorer.exe");
-			system("start explorer.exe");
-			cout << "已完成!" << endl,pause();
-		}void win11_del_Darrows() {
-			system("reg add \
-			\"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Icons\" \
-			/v 29 /d \" % systemroot % \\system32\\imageres.dll, 197\" /t reg_sz /f");
-			system("taskkill /f /im explorer.exe");
-			system("attrib -s -r -h \" % userprofile % \\AppData\\Local\\iconcache.db\"");
-			system("del \" % userprofile % \\AppData\\Local\\iconcache.db\" /f /q");
-			system("start explorer");
-			cout << "已完成!" << endl,pause();
-		}void restore_Darrows() {
-            system("reg delete \" \
-            HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Icons\" /v 29 /f");
-            system("taskkill /f /im explorer.exe");
-            system("start explorer");
-            cout << "已完成!" << endl,pause();
-        }
-};
-
 int main(){
 	system("chcp 65001");
     if (IsRunAsAdministrator() == FALSE) {
         ColPrint("请以管理员权限运行本程序!\n", F_RED);
         pause("按任意键退出....");
     }
+    
 	return 0;
 }
 //From[https://blog.csdn.net/u012505629/article/details/109692159]
