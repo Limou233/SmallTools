@@ -1,6 +1,14 @@
+/*
+Coding: UTF-8
+@Author: (limou233)[http://github.com/limou233]
+Compiler: MSVC++ 2022
+*/
 #include<iostream>
 #include<conio.h>
+#include<Windows.h>
+#include"./Color.cpp"
 using namespace std;
+// 函数名前加inline是为了解决LNK200和LNK1669错误
 inline void pause(string __prompt = "按任意键继续....") {
 	//暂停程序 (string:提示语) -> void
 	cout << __prompt << endl;
@@ -17,8 +25,6 @@ inline bool string_is_num(string str) {
 }
 
 namespace opt {
-	// 函数名前加inline是为了解决LNK200和LNK1669错误
-
 	//Darrows
 	
 	inline void win10_del_Darrows() {
@@ -45,12 +51,31 @@ namespace opt {
 		cout << "已完成!" << endl, pause();
 	}
 
+	inline void repair_DLL(){
+		ColPrint("执行过程中可能会需要按回车，如遇到按下即可\n",F_YELLOW);
+		system("Dism.exe /Online /Cleanup-Image /CheckHealth");
+		system("DISM.exe /Online /Cleanup-image /Scanhealth");
+		system("DISM.exe /Online /Cleanup-image /Restorehealth");
+		system("sfc /scannow");
+		system("sfc /scannow");
+        cout << "已完成!" << endl, pause();
+	}
+
+	void check_disk() {
+		ColPrint("请选择需要检测的盘符(如C盘为C:\\)>>>", F_YELLOW);
+		string disk_symbol;cin>>disk_symbol;
+		string tmp = "chkdsk /r "+disk_symbol;
+		system(tmp.c_str());
+		
+	}
 	static struct FuncList {
 		string name;
 		void (*func)();
 	}list[32] = {
 	"Win10去快捷方式箭头",&win10_del_Darrows,
 	"Win11去快捷方式箭头",&win11_del_Darrows,
-	"Win10/11恢复恢复箭头",&restore_Darrows
+	"Win10/11恢复恢复箭头",&restore_Darrows,
+	"修复系统DLL(Win10)",&repair_DLL,
+	"检查磁盘",&check_disk
 	};
 }

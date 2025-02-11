@@ -3,7 +3,6 @@ Coding: UTF-8
 @Author: (limou233)[http://github.com/limou233]
 Compiler: MSVC++ 2022
 */
-#include"./Color.cpp"
 #include"./Opts.cpp"
 using namespace std;
 BOOL IsRunAsAdministrator();

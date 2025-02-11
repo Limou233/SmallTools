@@ -1,5 +1,5 @@
 /*
-Coding:UTF-8
+Coding: UTF-8
 @Author: (limou233)[http://github.com/limou233]
 Compiler: MSVC++ 2022
 */
@@ -13,6 +13,9 @@ Compiler: MSVC++ 2022
 #define F_RED 0x4
 #define F_LIGHT 0x8
 #define F_WHITE 0x1|0x2|0x4|0x8
+
+#define F_YELLOW F_RED|F_GREEN
+
 #define B_BLUE 0x10
 #define B_GREEN 0x20
 #define B_RED 0x40
